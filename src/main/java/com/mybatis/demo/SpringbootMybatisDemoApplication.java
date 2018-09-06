@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @SpringBootApplication
-@MapperScan("com.mybatis.demo.mapper")
+@MapperScan("com.mybatis.demo.mapperXml")
 public class SpringbootMybatisDemoApplication {
 
     //Mybatis默认配置的事务管理器>>>>>>org.springframework.jdbc.datasource.DataSourceTransactionManager
