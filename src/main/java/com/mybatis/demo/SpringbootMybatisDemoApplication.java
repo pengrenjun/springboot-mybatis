@@ -5,9 +5,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@MapperScan("com.mybatis.demo.mapperXml")
+@MapperScan(basePackages = {"com.mybatis.demo.mapper"})
+@EnableTransactionManagement
 public class SpringbootMybatisDemoApplication {
 
     //Mybatis默认配置的事务管理器>>>>>>org.springframework.jdbc.datasource.DataSourceTransactionManager

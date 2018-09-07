@@ -17,6 +17,12 @@
         from user
         where id = #{id,jdbcType=INTEGER}
     </select>
+
+    <!--使用useGeneratedKeys="true" keyProperty="id" 插入数据后 通过get方法可以获取到用户id-->
+    <insert id="addNewUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.mybatis.demo.entity.User" >
+        insert into user ( name, birthday, location,comments)
+        values ( #{name,jdbcType=VARCHAR}, #{birthday},#{location},#{comments})
+    </insert>
     <!--
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
         delete from user_t

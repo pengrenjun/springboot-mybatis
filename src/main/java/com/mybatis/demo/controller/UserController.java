@@ -5,10 +5,11 @@ import com.mybatis.demo.entity.User;
 import com.mybatis.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+
+import java.sql.Date;
+import java.util.UUID;
 
 @RestController
 @EnableAutoConfiguration
@@ -23,4 +24,19 @@ public class UserController {
         User user =userMapper.getUserInfoById(id);
         return user;
     }
+
+    @PostMapping("/addNewUser")
+    @Transactional
+    public Integer addNewUser(){
+        User user=new User();
+        user.setName("xiao"+UUID.randomUUID());
+        user.setBirthday(new Date(System.currentTimeMillis()));
+        user.setComments("test transaction");
+        userMapper.addNewUser(user);
+        int i=1/0;
+        return user.getId();
+    }
+
+
+
 }
