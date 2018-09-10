@@ -37,6 +37,23 @@ public class UserController {
         return user.getId();
     }
 
+    @PostMapping("/addNewUsers")
+    @Transactional
+    public void addNewUsers(){
+
+        for(int i=0;i<10;i++){
+            User user=new User();
+            user.setName("xiao"+UUID.randomUUID());
+            user.setBirthday(new Date(System.currentTimeMillis()));
+            user.setComments("test transaction");
+            if(Integer.compare(i,9)==0){
+                throw new RuntimeException("测试回滚");
+            }
+            userMapper.addNewUser(user);
+        }
+
+    }
+
 
 
 }
