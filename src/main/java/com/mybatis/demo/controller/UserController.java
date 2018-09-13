@@ -39,6 +39,7 @@ public class UserController {
 
     @PostMapping("/addNewUsers")
     @Transactional
+
     public void addNewUsers(){
 
         for(int i=0;i<10;i++){
